@@ -9,5 +9,5 @@ Planned Features List
 * Pinterest-specific descriptions (For Pinterest SEO)
 * Standard Alt text for SEO and Accessibility
 * Disable Pinning on Certain Images
-* Add Pinterest hover icon on images
-* Pin hidden images
+* Add Pinterest 'save' hover icon on images
+* Add ability to Pin hidden images
