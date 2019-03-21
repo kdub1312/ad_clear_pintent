@@ -8,20 +8,45 @@
    Author URI: TBD
    License: MIT
    */
-function ad_clear_pintent_enqueue_script() {   
-        wp_register_style( 'ad_clear_pintent_styles', plugin_dir_url( __FILE__ ) . 'css/styles.css', array( 'bootstrap-css' ), '1.0' );
-        wp_enqueue_style( 'ad_clear_pintent_styles' );
-}
-add_action('wp_enqueue_scripts', 'ad_clear_pintent_enqueue_script');
 
-function ad_clear_pintent($atts=[], $content=null) {
+//exit if file is called directly
+if (! defined( 'ABSPATH' ) ) {
     
-    $content = "<div class='clear-pintent'>" . $content . "</div>";
-    
-    $content = do_shortcode($content);
-    
-    return $content;
+    exit;
     
 }
-add_shortcode('adclearpintent', 'ad_clear_pintent');
+
+if ( is_admin() ) {
+    
+    require_once plugin_dir_path( __FILE__ ) . 'admin/admin.php';
+    
+}
+
+/**
+ * Adding a custom field to Attachment Edit Fields
+ * @param  array $form_fields 
+ * @param  WP_POST $post        
+ * @return array              
+ */
+
+    
+
+//        function add_pinterest_fields( $form_fields, $post ) {
+//       
+//            $field_value = get_post_meta( $post->ID, 'pin-description', true );
+//
+//            $form_fields['pin-description'] = array(
+//                'value' => $field_value ? $field_value : '',
+//                'label' => __( 'Pin Description' ),
+//                'helps' => __( 'Add a short description for Pinterest SEO' ),
+//                'input' => 'textarea'
+//            );
+//
+//            return $form_fields;
+//          }
+//        
+//        
+//            add_filter( 'attachment_fields_to_edit', 'add_pinterest_fields', null, 2 );
+      
+
 ?>
