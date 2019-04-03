@@ -45,4 +45,34 @@ if (! defined( 'ABSPATH' ) ) {
 
             add_action( 'edit_attachment', 'ad_save_pinterest_fields' );
 
+        add_filter( 'image_send_to_editor', 'add_pin_description_to_image', 10, 2 );
+
+        function add_pin_description_to_image( $html, $attachment_id ) 
+        {
+            if ($attachment_id)
+            {
+                //check if there is pin-description for the image
+                $pin_description = esc_attr(get_post_meta($attachment_id, 'pin-description', true));
+
+                //if there is a pin description set for the image, add data-pin-description attr
+                if ($pin_description)
+                {
+                    $document = new DOMDocument();
+                    $document->loadHTML($html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+                    $imgs = $document->getElementsByTagName('img');
+
+                    foreach ($imgs as $img)
+                    {
+                        //add the data attribute
+                        $img->setAttribute('data-pin-description', $pin_description);
+                    }
+
+                    $html = $document->saveHTML();
+                }
+            }
+
+            return $html;
+        }
+
 ?>
