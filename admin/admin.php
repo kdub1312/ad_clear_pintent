@@ -45,9 +45,9 @@ if (! defined( 'ABSPATH' ) ) {
 
             add_action( 'edit_attachment', 'ad_save_pinterest_fields' );
 
-        add_filter( 'image_send_to_editor', 'add_pin_description_to_image', 10, 2 );
+        add_filter( 'image_send_to_editor', 'ad_add_pin_description_to_image', 10, 2 );
 
-        function add_pin_description_to_image( $html, $attachment_id ) 
+        function ad_add_pin_description_to_image( $html, $attachment_id ) 
         {
             if ($attachment_id)
             {
