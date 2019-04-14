@@ -24,7 +24,8 @@ if (! defined( 'ABSPATH' ) ) {
                 'value' => $field_value ? esc_textarea($field_value) : '',
                 'label' => __( 'Pin Description' ),
                 'helps' => __( 'Add a short description for Pinterest SEO' ),
-                'input' => 'textarea'
+                'input' => 'textarea',
+                'textarea' => '<textarea id="attachments-20-pin-description" name="attachments[20][pin-description]" style="width: 100%;"></textarea>'
             );
 
             return $form_fields;
